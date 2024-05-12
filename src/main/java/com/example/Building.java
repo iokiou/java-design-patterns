@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.Optional;
+
 public class Building extends Graphic {
 
     private BuildingType buildingType;
@@ -26,4 +28,12 @@ public class Building extends Graphic {
                 '}';
     }
 
+    @Override
+    public Building clone() {
+        return new Building(
+                this.getHeightInPixels(),
+                Optional.ofNullable(this.getBuildingType())
+                        .map(bt -> new BuildingType(bt.getType()))
+                        .orElse(null));
+    }
 }
