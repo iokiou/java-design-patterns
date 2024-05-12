@@ -1,18 +1,25 @@
 package com.example;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
 public class VendingMachine {
 
+    private static final Map<String, Supplier<Snack>> snacksMap = new HashMap<>();
 
+    static {
+        snacksMap.put("ChocolateBar", ChocolateBar::new);
+        snacksMap.put("Drink", Drink::new);
+        snacksMap.put("Chips", Chips::new);
+    }
 
     Snack getSnack(String snackType) {
-        if (snackType.equals("ChocolateBar")) {
-            return new ChocolateBar();
-        } else if (snackType.equals("Drink")) {
-            return new Drink();
+        if (snacksMap.containsKey(snackType)) {
+            return snacksMap.get(snackType).get();
         } else {
-            return new Chips();
+            throw new IllegalArgumentException("No such snack type exists: " + snackType);
         }
-
     }
 
 
