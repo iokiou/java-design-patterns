@@ -1,15 +1,12 @@
 package com.example;
 
-public class Logger {
+public enum Logger {
 
-    private static Logger INSTANCE;
+    INSTANCE;
 
-    private Logger() {}
-
-    public synchronized static Logger getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Logger();
-        }
+    // This method is redundant in the "enum" solution
+    @SuppressWarnings("unused")
+    public static Logger getInstance() {
         return INSTANCE;
     }
 
