@@ -10,7 +10,7 @@ public class StoreItem
     private final Integer stockAvailable;
     private final String packagingType;
 
-    public StoreItem(StoreItemBuilder builder) {
+    private StoreItem(StoreItemBuilder builder) {
         this.name = builder.name;
         this.price = builder.price;
         this.shortDescription = builder.shortDescription;
@@ -20,6 +20,10 @@ public class StoreItem
         if (name == null || price == null) {
             throw new IllegalArgumentException("Name and price must not be null");
         }
+    }
+
+    public static StoreItemBuilder builder(String name, Double price) {
+        return new StoreItemBuilder(name, price);
     }
 
     @Override
@@ -34,7 +38,7 @@ public class StoreItem
                 '}';
     }
 
-    public static class StoreItemBuilder {
+     public static class StoreItemBuilder {
         private final String name;
         private final Double price;
         private String shortDescription;
@@ -42,7 +46,7 @@ public class StoreItem
         private Integer stockAvailable;
         private String packagingType;
 
-        public StoreItemBuilder(String name, Double price) {
+        private StoreItemBuilder(String name, Double price) {
             this.name = name;
             this.price = price;
         }
