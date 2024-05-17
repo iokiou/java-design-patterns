@@ -7,8 +7,12 @@ public class App {
         var englishGreeting = new Greeting(englishLocalizedMessage);
         englishGreeting.print();
 
-        var frenchLocalizedMessage= new FrenchLocalizedMessageAdapter();
-        var frenchGreeting = new Greeting(frenchLocalizedMessage);
+        var frenchLocalizedMessageObject = new FrenchLocalizedMessageObjectAdapter();
+        var frenchGreeting = new Greeting(frenchLocalizedMessageObject);
+        frenchGreeting.print();
+
+        var frenchLocalizedMessageClass = new FrenchLocalizedMessageClassAdapter();
+        frenchGreeting = new Greeting(frenchLocalizedMessageClass);
         frenchGreeting.print();
     }
 

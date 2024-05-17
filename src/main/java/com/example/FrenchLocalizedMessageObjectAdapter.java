@@ -1,10 +1,10 @@
 package com.example;
 
-public class FrenchLocalizedMessageAdapter implements LocalizedMessage {
+public class FrenchLocalizedMessageObjectAdapter implements LocalizedMessage {
 
     private final FrenchLocalizedMessage frenchLocalizedMessage;
 
-    public FrenchLocalizedMessageAdapter() {
+    public FrenchLocalizedMessageObjectAdapter() {
         frenchLocalizedMessage = new FrenchLocalizedMessage();
     }
 
